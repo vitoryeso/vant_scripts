@@ -1,0 +1,7 @@
+classes= 3
+train  = /content/vant_scripts/train.txt
+valid  = /content/vant_scripts/valid.txt
+names = /content/vant_scripts/classes.names
+backup = /content/drive/MyDrive/COLAB-project/Yolov4/train_yolov4-608-FHD/weights/
+
+
