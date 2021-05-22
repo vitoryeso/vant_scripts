@@ -1,7 +1,18 @@
 import os
 import pandas as pd
+import sys
+import sys
 
-WEIGHTS_PATH = '/content/drive/My Drive/COLAB/TRAIN_NEW_DATA/backup-tiny-416-3l/'
+if len(sys.argv) != 3:
+    print("invalid arguments")
+    exit()
+
+exit()
+
+CFG_PATH = sys.argv[1]
+
+
+WEIGHTS_PATH = sys.argv[2]
 
 mAP = []
 carmAP = []
@@ -21,9 +32,9 @@ for arq in f:
 		prov.append(arq)
 for a in prov:
 	f.remove(a)
-WEIGHTS_PATH = '/content/drive/My\ Drive/COLAB/TRAIN_NEW_DATA/backup-tiny-416-3l/'
+
 for i in range(len(f)):
-	cmd = './darknet detector map /content/vant_dataset.data /content/yolov3-tiny-obj-3l.cfg ' + WEIGHTS_PATH + f[i] + ' -iou_thresh 0.40 > map.txt'
+	cmd = './darknet detector map /content/vant_scripts/vant_dataset.data /content/yolov3-tiny-obj-3l.cfg ' + WEIGHTS_PATH + f[i] + ' -iou_thresh 0.50 > map.txt'
 	os.system(cmd)
 	arq = open('map.txt', 'r')
 
@@ -39,7 +50,7 @@ for i in range(len(f)):
 			motmAP.append(float(line.split(' ')[8].split('%')[0]))
 		if 'average IoU' in line:
 			iou.append(float(line.split(' ')[-3]))
-		if line is '':
+		if line == '':
 			break
 	arq.close()
 	os.system('rm map.txt')
@@ -56,10 +67,3 @@ data = {'Iterations': f,
 df = pd.DataFrame(data)
 df = df.sort_values('Iterations')
 df.to_csv('map.csv')
-
-
-
-
-
-
-
