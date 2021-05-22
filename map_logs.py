@@ -7,8 +7,6 @@ if len(sys.argv) != 3:
     print("invalid arguments")
     exit()
 
-exit()
-
 CFG_PATH = sys.argv[1]
 
 
@@ -34,7 +32,7 @@ for a in prov:
 	f.remove(a)
 
 for i in range(len(f)):
-	cmd = './darknet detector map /content/vant_scripts/vant_dataset.data /content/yolov3-tiny-obj-3l.cfg ' + WEIGHTS_PATH + f[i] + ' -iou_thresh 0.50 > map.txt'
+	cmd = '/content/darknet/darknet detector map /content/vant_scripts/vant_dataset.data /content/vant_scripts/custom_configs/' + CFG_PATH + ' ' + WEIGHTS_PATH + f[i] + ' -iou_thresh 0.50 > map.txt'
 	os.system(cmd)
 	arq = open('map.txt', 'r')
 
