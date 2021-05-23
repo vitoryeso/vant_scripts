@@ -22,6 +22,7 @@ iou = []
 for i in os.walk(WEIGHTS_PATH):
 	f = i
 	break
+
 f = f[2]
 #filtrando os nomes para pegar so os pesos
 prov = []
