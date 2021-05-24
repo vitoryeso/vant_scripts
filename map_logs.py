@@ -33,7 +33,7 @@ for a in prov:
 	f.remove(a)
 
 for i in range(len(f)):
-	cmd = '/content/darknet/darknet detector map /content/vant_scripts/vant_dataset.data /content/vant_scripts/custom_configs/' + CFG_PATH + ' ' + WEIGHTS_PATH + f[i] + ' -iou_thresh 0.50 > map.txt'
+	cmd = '/content/darknet/darknet detector map /content/vant_scripts/vant_dataset.data ' + CFG_PATH + ' ' + WEIGHTS_PATH + f[i] + ' -iou_thresh 0.50 > map.txt'
 	os.system(cmd)
 	arq = open('map.txt', 'r')
 
